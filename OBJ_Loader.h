@@ -31,48 +31,36 @@ namespace objl
 	// Description: A 2D Vector that Holds Positional Data
 	struct Vector2
 	{
-		// Default Constructor
-		Vector2()
-		{
-			X = 0.0f;
-			Y = 0.0f;
-		}
-		// Variable Set Constructor
-		Vector2(float X_, float Y_)
-		{
-			X = X_;
-			Y = Y_;
-		}
-		// Bool Equals Operator Overload
-		bool operator==(const Vector2& other) const
-		{
-			return (this->X == other.X && this->Y == other.Y);
-		}
-		// Bool Not Equals Operator Overload
-		bool operator!=(const Vector2& other) const
-		{
-			return !(this->X == other.X && this->Y == other.Y);
-		}
-		// Addition Operator Overload
-		Vector2 operator+(const Vector2& right) const
-		{
-			return Vector2(this->X + right.X, this->Y + right.Y);
-		}
-		// Subtraction Operator Overload
-		Vector2 operator-(const Vector2& right) const
-		{
-			return Vector2(this->X - right.X, this->Y - right.Y);
-		}
-		// Float Multiplication Operator Overload
-		Vector2 operator*(const float& other) const
-		{
-			return Vector2(this->X *other, this->Y * other);
-		}
-
 		// Positional Variables
-		float X;
-		float Y;
+		float X = 0.0f;
+		float Y = 0.0f;
 	};
+
+			// Bool Equals Operator Overload
+	inline bool operator==(const Vector2& lhs,const Vector2& rhs)
+	{
+		return (lhs.X == rhs.X && lhs.Y == rhs.Y);
+	}
+	// Bool Not Equals Operator Overload
+	inline bool operator!=(const Vector2& lhs,const Vector2& rhs)
+	{
+		return !(lhs == rhs);
+	}
+	// Addition Operator Overload
+	inline Vector2 operator+(const Vector2& lhs,const Vector2& rhs)
+	{
+		return Vector2{lhs.X + rhs.X, lhs.Y + rhs.Y};
+	}
+	// Subtraction Operator Overload
+	inline Vector2 operator-(const Vector2& lhs,const Vector2& rhs)
+	{
+		return Vector2{lhs.X - rhs.X, lhs.Y - rhs.Y};
+	}
+	// Float Multiplication Operator Overload
+	inline Vector2 operator*(const Vector2& lhs,const Vector2& rhs)
+	{
+		return Vector2{lhs.X * rhs.X, lhs.Y * rhs.Y};
+	}
 
 	// Structure: Vector3
 	//
@@ -780,7 +768,7 @@ namespace objl
 				case 1: // P
 				{
 					vVert.Position = algorithm::getElement(iPositions, svert[0]);
-					vVert.TextureCoordinate = Vector2(0, 0);
+					vVert.TextureCoordinate = Vector2{0.0f,0.0f};
 					noNormal = true;
 					oVerts.push_back(vVert);
 					break;
@@ -796,7 +784,7 @@ namespace objl
 				case 3: // P//N
 				{
 					vVert.Position = algorithm::getElement(iPositions, svert[0]);
-					vVert.TextureCoordinate = Vector2(0, 0);
+					vVert.TextureCoordinate = Vector2{0.0f,0.0f};
 					vVert.Normal = algorithm::getElement(iNormals, svert[2]);
 					oVerts.push_back(vVert);
 					break;

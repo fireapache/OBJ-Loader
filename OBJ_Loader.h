@@ -29,12 +29,21 @@ namespace objl
 	// Structure: Vector2
 	//
 	// Description: A 2D Vector that Holds Positional Data
+
+#if defined(_WIN32)
+#pragma pack(push)
+#pragma pack(1)
+#endif
+
 	struct Vector2
 	{
 		// Positional Variables
 		float X = 0.0f;
 		float Y = 0.0f;
 	};
+#if defined(_WIN32)
+#pragma pack(pop)
+#endif
 
 			// Bool Equals Operator Overload
 	inline bool operator==(const Vector2& lhs,const Vector2& rhs)
@@ -57,66 +66,62 @@ namespace objl
 		return Vector2{lhs.X - rhs.X, lhs.Y - rhs.Y};
 	}
 	// Float Multiplication Operator Overload
-	inline Vector2 operator*(const Vector2& lhs,const Vector2& rhs)
+	inline Vector2 operator*(const Vector2& lhs,const float& rhs)
 	{
-		return Vector2{lhs.X * rhs.X, lhs.Y * rhs.Y};
+		return Vector2{lhs.X * rhs, lhs.Y * rhs};
 	}
 
 	// Structure: Vector3
 	//
 	// Description: A 3D Vector that Holds Positional Data
+	#if defined(_WIN32)
+	#pragma pack(push)
+	#pragma pack(1)
+	#endif
 	struct Vector3
 	{
-		// Default Constructor
-		Vector3()
-		{
-			X = 0.0f;
-			Y = 0.0f;
-			Z = 0.0f;
-		}
-		// Variable Set Constructor
-		Vector3(float X_, float Y_, float Z_)
-		{
-			X = X_;
-			Y = Y_;
-			Z = Z_;
-		}
-		// Bool Equals Operator Overload
-		bool operator==(const Vector3& other) const
-		{
-			return (this->X == other.X && this->Y == other.Y && this->Z == other.Z);
-		}
-		// Bool Not Equals Operator Overload
-		bool operator!=(const Vector3& other) const
-		{
-			return !(this->X == other.X && this->Y == other.Y && this->Z == other.Z);
-		}
-		// Addition Operator Overload
-		Vector3 operator+(const Vector3& right) const
-		{
-			return Vector3(this->X + right.X, this->Y + right.Y, this->Z + right.Z);
-		}
-		// Subtraction Operator Overload
-		Vector3 operator-(const Vector3& right) const
-		{
-			return Vector3(this->X - right.X, this->Y - right.Y, this->Z - right.Z);
-		}
-		// Float Multiplication Operator Overload
-		Vector3 operator*(const float& other) const
-		{
-			return Vector3(this->X * other, this->Y * other, this->Z * other);
-		}
-		// Float Division Operator Overload
-		Vector3 operator/(const float& other) const
-		{
-			return Vector3(this->X / other, this->Y / other, this->Z / other);
-		}
-
 		// Positional Variables
 		float X;
 		float Y;
 		float Z;
 	};
+	#if defined(_WIN32)
+	#pragma pack(pop)
+	#endif
+
+	// Bool Equals Operator Overload
+	inline bool operator==(const Vector3& lhs,const Vector3& rhs)
+	{
+		return (lhs.X == rhs.X && lhs.Y == rhs.Y && lhs.Z == rhs.Z);
+	}
+
+	// Bool Not Equals Operator Overload
+	inline bool operator!=(const Vector3& lhs,const Vector3& rhs)
+	{
+		return !(lhs == rhs);
+	}
+
+	// Addition Operator Overload
+	inline Vector3 operator+(const Vector3& lhs,const Vector3& rhs)
+	{
+		return Vector3{lhs.X + rhs.X, lhs.Y + rhs.Y, lhs.Z + rhs.Z};
+	}
+	// Subtraction Operator Overload
+	inline Vector3 operator-(const Vector3& lhs,const Vector3& rhs)
+	{
+		return Vector3{lhs.X - rhs.X, lhs.Y - rhs.Y, lhs.Z - rhs.Z};
+	}
+	// Float Multiplication Operator Overload
+	inline Vector3 operator*(const Vector3& lhs,const float& rhs)
+	{
+		return Vector3{lhs.X * rhs, lhs.Y * rhs, lhs.Z * rhs};
+	}
+	// Float Division Operator Overload
+	inline Vector3 operator/(const Vector3& lhs,const float& rhs)
+	{
+		return Vector3{lhs.X / rhs, lhs.Y / rhs, lhs.Z / rhs};
+	}
+
 
 	// Structure: Vertex
 	//
@@ -212,9 +217,9 @@ namespace objl
 		// Vector3 Cross Product
 		Vector3 CrossV3(const Vector3 a, const Vector3 b)
 		{
-			return Vector3(a.Y * b.Z - a.Z * b.Y,
+			return Vector3{a.Y * b.Z - a.Z * b.Y,
 				a.Z * b.X - a.X * b.Z,
-				a.X * b.Y - a.Y * b.X);
+				a.X * b.Y - a.Y * b.X};
 		}
 
 		// Vector3 Magnitude Calculation
@@ -252,13 +257,13 @@ namespace objl
 	namespace algorithm
 	{
 		// Vector3 Multiplication Opertor Overload
-		Vector3 operator*(const float& left, const Vector3& right)
+		inline Vector3 operator*(const float& left, const Vector3& right)
 		{
-			return Vector3(right.X * left, right.Y * left, right.Z * left);
+			return Vector3{right.X * left, right.Y * left, right.Z * left};
 		}
 
 		// A test to see if P1 is on the same side as P2 of a line segment ab
-		bool SameSide(Vector3 p1, Vector3 p2, Vector3 a, Vector3 b)
+		inline bool SameSide(Vector3 p1, Vector3 p2, Vector3 a, Vector3 b)
 		{
 			Vector3 cp1 = math::CrossV3(b - a, p1 - a);
 			Vector3 cp2 = math::CrossV3(b - a, p2 - a);
@@ -270,7 +275,7 @@ namespace objl
 		}
 
 		// Generate a cross produect normal for a triangle
-		Vector3 GenTriNormal(Vector3 t1, Vector3 t2, Vector3 t3)
+		inline Vector3 GenTriNormal(Vector3 t1, Vector3 t2, Vector3 t3)
 		{
 			Vector3 u = t2 - t1;
 			Vector3 v = t3 - t1;
@@ -281,7 +286,7 @@ namespace objl
 		}
 
 		// Check to see if a Vector3 Point is within a 3 Vector3 Triangle
-		bool inTriangle(Vector3 point, Vector3 tri1, Vector3 tri2, Vector3 tri3)
+		inline bool inTriangle(Vector3 point, Vector3 tri1, Vector3 tri2, Vector3 tri3)
 		{
 			// Test to see if it is within an infinite prism that the triangle outlines.
 			bool within_tri_prisim = SameSide(point, tri1, tri2, tri3) && SameSide(point, tri2, tri1, tri3)

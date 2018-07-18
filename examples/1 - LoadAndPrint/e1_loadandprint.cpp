@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
 		std::ofstream file("e1Out.txt");
 
 		// Go through each loaded mesh and out its contents
-		for (int i = 0; i < Loader.LoadedMeshes.size(); i++)
+		for (size_t i = 0; i < Loader.LoadedMeshes.size(); i++)
 		{
 			// Copy one of the loaded meshes to be our current mesh
 			objl::Mesh curMesh = Loader.LoadedMeshes[i];
@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 
 			// Go through each vertex and print its number,
 			//  position, normal, and texture coordinate
-			for (int j = 0; j < curMesh.Vertices.size(); j++)
+			for (size_t j = 0; j < curMesh.Vertices.size(); j++)
 			{
 				file << "V" << j << ": " <<
 					"P(" << curMesh.Vertices[j].Position.X << ", " << curMesh.Vertices[j].Position.Y << ", " << curMesh.Vertices[j].Position.Z << ") " <<
@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 
 			// Go through every 3rd index and print the
 			//	triangle that these indices represent
-			for (int j = 0; j < curMesh.Indices.size(); j += 3)
+			for (size_t j = 0; j < curMesh.Indices.size(); j += 3)
 			{
 				file << "T" << j / 3 << ": " << curMesh.Indices[j] << ", " << curMesh.Indices[j + 1] << ", " << curMesh.Indices[j + 2] << "\n";
 			}

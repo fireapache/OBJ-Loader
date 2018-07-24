@@ -1,9 +1,4 @@
 ﻿  e1_loadandprint.cpp
-d:\users\raphael\desktop\repositories\github\obj-loader\obj_loader.h(640): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-d:\users\raphael\desktop\repositories\github\obj-loader\obj_loader.h(677): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-d:\users\raphael\desktop\repositories\github\obj-loader\obj_loader.h(683): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-d:\users\raphael\desktop\repositories\github\obj-loader\obj_loader.h(937): warning C4244: "Initialisierung": Konvertierung von "double" in "float", möglicher Datenverlust
-d:\users\raphael\desktop\repositories\github\obj-loader\examples\1 - loadandprint\e1_loadandprint.cpp(33): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-d:\users\raphael\desktop\repositories\github\obj-loader\examples\1 - loadandprint\e1_loadandprint.cpp(46): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
-d:\users\raphael\desktop\repositories\github\obj-loader\examples\1 - loadandprint\e1_loadandprint.cpp(59): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+d:\users\raphael\desktop\repositories\github\obj-loader\obj_parse.h(624): warning C4244: "Argument": Konvertierung von "std::streamoff" in "const unsigned int", möglicher Datenverlust
+d:\users\raphael\desktop\repositories\github\obj-loader\examples\1 - loadandprint\e1_loadandprint.cpp(34): warning C4244: "Argument": Konvertierung von "std::streamoff" in "const unsigned int", möglicher Datenverlust
   OBJ-Loader.vcxproj -> D:\Users\Raphael\Desktop\Repositories\github\OBJ-Loader\Debug\OBJ-Loader.exe

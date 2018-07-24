@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OBJ_Loader.h">
+    <ClInclude Include="obj_parse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -383,6 +383,16 @@ namespace objl
 		// Default Constructor
 		Loader() = default;
 
+		Loader(const std::string&& filePath)
+		{
+			load(filePath);
+		}
+
+		Loader(const std::string& filePath)
+		{
+			load(filePath);
+		}
+
 		~Loader()
 		{
 			LoadedMeshes.clear();
@@ -394,11 +404,11 @@ namespace objl
 		//
 		// If the file is unable to be found
 		// or unable to be loaded return false
-		bool load(const std::vector<uint8_t>& data)
+		bool load(const std::string& filePath)
 		{
 			// If the file is not an .obj file return false
 
-			std::stringstream stream(reinterpret_cast<const char*>(data.data()));
+			std::ifstream stream(reinterpret_cast<const char*>(filePath.data()));
 
 			LoadedMeshes.clear();
 			LoadedVertices.clear();

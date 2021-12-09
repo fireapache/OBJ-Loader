@@ -1,4 +1,0 @@
-﻿  e1_loadandprint.cpp
-d:\users\raphael\desktop\repositories\github\obj-loader\obj_parse.h(624): warning C4244: "Argument": Konvertierung von "std::streamoff" in "const unsigned int", möglicher Datenverlust
-d:\users\raphael\desktop\repositories\github\obj-loader\examples\1 - loadandprint\e1_loadandprint.cpp(34): warning C4244: "Argument": Konvertierung von "std::streamoff" in "const unsigned int", möglicher Datenverlust
-  OBJ-Loader.vcxproj -> D:\Users\Raphael\Desktop\Repositories\github\OBJ-Loader\Debug\OBJ-Loader.exe
